@@ -11,7 +11,7 @@ module Make (Platform: PlatformTypes.S) = struct
   module RsaKey = struct
     type t = { n: Bigint.t; e: Bigint.t }
     let create (key: pub) =
-      (* Caml.print_endline "rsa create key"; *)
+      (* Stdlib.print_endline "rsa create key"; *)
       { n = Bigint.of_cstruct_be key.n; e = Bigint.of_cstruct_be key.e }
     let encrypt ~key data =
       Bigint.powm (Bigint.of_cstruct_be data) key.e key.n
@@ -47,7 +47,7 @@ module Make (Platform: PlatformTypes.S) = struct
         |> Platform.Crypto.SHA1.digest
       in
       (* let finger_cs = Cstruct.sub cs 12 8 in
-      Caml.print_endline "New fingerprint";
+      Stdlib.print_endline "New fingerprint";
       Cstruct.hexdump finger_cs; *)
       Cstruct.LE.get_uint64 cs 12
 

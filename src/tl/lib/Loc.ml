@@ -51,7 +51,7 @@ let show t =
   let (_, lend, cend) = get_pos_info t.loc_end in
   Printf.sprintf "%s:%d:%d-%d:%d" fname lstart cstart lend cend
 
-let pp fmt t = Caml.Format.fprintf fmt "%s" (show t)
+let pp fmt t = Stdlib.Format.fprintf fmt "%s" (show t)
 
 let (=) = equal
 

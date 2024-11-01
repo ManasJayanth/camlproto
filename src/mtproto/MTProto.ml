@@ -442,7 +442,7 @@ module MakeMTProtoV2Client (Platform: PlatformTypes.S) (T: TransportTypes.S) = s
       let pong = TLM.TLT_Pong.(TL_pong pong) in
       (* TODO: May cause segmentation fault
         if server sent pong.msg_id that tied to non-ping message *)
-      Lwt.wakeup_later resolver (Caml.Obj.magic pong) (* XXX *)
+      Lwt.wakeup_later resolver (Stdlib.Obj.magic pong) (* XXX *)
     | None -> Log.info (fun m -> m "Ping with msg_id %Ld not found" pong.msg_id)
 
   let handle_new_session_created t (obj: TLM.TL_new_session_created.t) =

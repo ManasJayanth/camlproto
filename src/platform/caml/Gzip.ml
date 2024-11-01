@@ -20,5 +20,5 @@ let decompress cs =
   | Ok x -> Cstruct.of_string x
   | Error (`Gzip err) ->
     let errstr = string_of_ezgzip_error err in
-    Caml.print_endline errstr; (* TODO: remove this line *)
+    Stdlib.print_endline errstr; (* TODO: remove this line *)
     raise @@ Error errstr

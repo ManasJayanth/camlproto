@@ -3,9 +3,9 @@ open Translate
 
 let t str_in =
   let (errs, str_out) = translate str_in in
-  List.iter errs ~f:(fun e -> Caml.print_endline @@ Err.show e);
-  Caml.print_endline "---";
-  Caml.print_endline str_out
+  List.iter errs ~f:(fun e -> Stdlib.print_endline @@ Err.show e);
+  Stdlib.print_endline "---";
+  Stdlib.print_endline str_out
 
 let%expect_test "basic" =
   t "

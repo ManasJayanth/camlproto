@@ -59,5 +59,5 @@ let crc32 (buf : Cstruct.t) =
   Int32.bit_not !crc
 
 let%expect_test "math/crc32" =
-  Caml.Printf.printf "%lX" @@ crc32 @@ Cstruct.of_hex "1c b5 c4 15";
+  Stdlib.Printf.printf "%lX" @@ crc32 @@ Cstruct.of_hex "1c b5 c4 15";
   [%expect {| 3A55FD61 |}]

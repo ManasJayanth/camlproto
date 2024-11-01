@@ -53,7 +53,7 @@ let send t payload =
   end;
   Cstruct.blit payload 0 buf header_len payload_len;
 
-  (* Caml.print_endline "To server:"; Cstruct.hexdump buf; *)
+  (* Stdlib.print_endline "To server:"; Cstruct.hexdump buf; *)
 
   let buf_bigstring = buf.buffer in
   let%lwt written = Lwt_io.write_from_bigstring t.output buf_bigstring 0 len in
@@ -71,7 +71,7 @@ let receive t =
       Bytes.set len_bytes 3 '\000';
       Lwt.return @@ Int32.to_int_trunc
         (* JS' Base does not have get_int32 functions (yet?) *)
-        @@ Caml.Bytes.get_int32_le len_bytes 0
+        @@ Stdlib.Bytes.get_int32_le len_bytes 0
     end else
       Lwt.return one_byte_header
   in

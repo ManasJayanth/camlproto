@@ -25,11 +25,11 @@ let create (address, port) =
   promise
 
 let send t packet =
-  Caml.print_endline "js_tcp_full##send start";
+  Stdlib.print_endline "js_tcp_full##send start";
   let (promise, resolver) = Lwt.task () in
   let cb () = Lwt.wakeup_later resolver () in
   js_tcp_full##send t (Cstruct.to_bigarray packet) (Js.wrap_callback cb);
-  Caml.print_endline "js_tcp_full##send end";
+  Stdlib.print_endline "js_tcp_full##send end";
   promise
 
 let receive t =
@@ -37,7 +37,7 @@ let receive t =
   let cb x =
     let data = x
       |> Typed_array.Bigstring.of_arrayBuffer
-      |> Cstruct.of_bigarray in Caml.print_endline (Int.to_string @@ Cstruct.length data); Cstruct.hexdump data;
+      |> Cstruct.of_bigarray in Stdlib.print_endline (Int.to_string @@ Cstruct.length data); Cstruct.hexdump data;
     Lwt.wakeup_later resolver data
   in
   js_tcp_full##receive t (Js.wrap_callback cb);

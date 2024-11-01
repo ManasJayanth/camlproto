@@ -48,7 +48,7 @@ let send t payload =
   let checksum = Crypto.crc32 @@ Cstruct.sub buf 0 (len - 4) in
   Cstruct.LE.set_uint32 buf (len - 4) checksum;
 
-  (* Caml.print_endline "To server:"; Cstruct.hexdump buf; *)
+  (* Stdlib.print_endline "To server:"; Cstruct.hexdump buf; *)
 
   let buf_bigstring = Cstruct.to_bigarray buf in
   let%lwt written = Lwt_io.write_from_bigstring t.output buf_bigstring 0 len in

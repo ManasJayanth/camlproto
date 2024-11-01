@@ -111,12 +111,12 @@ let pq_factorize (cs : Cstruct.t) =
 
 let%expect_test "should factorize correctly" =
   let p, q = pq_factorize_int64 0x1dfaf951107f49dfL in
-  Caml.Printf.printf "%Ld, %Ld" p q;
+  Stdlib.Printf.printf "%Ld, %Ld" p q;
   [%expect {| 1124459477, 1921201379 |}]
 
 let%expect_test "should factorize correctly given a prime number input" =
   let p, q = pq_factorize_int64 67_280_421_310_721L in
-  Caml.Printf.printf "%Ld, %Ld" p q;
+  Stdlib.Printf.printf "%Ld, %Ld" p q;
   [%expect {| 1, 67280421310721 |}]
 
 (* This doesn't support numbers in the negative range, the TDLib / TDesktop's
@@ -124,4 +124,4 @@ let%expect_test "should factorize correctly given a prime number input" =
 (* let%expect_test "should factorize correctly a number in the negative range" =
   let p, q = pq_factorize_int64 (-8390791955656038479L) (* 10055952118053513137 *) in
   (* Should be 1757925569, 5720351473 *)
-  Caml.Printf.printf "%Ld, %Ld" p q *)
+  Stdlib.Printf.printf "%Ld, %Ld" p q *)

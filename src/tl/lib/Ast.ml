@@ -259,7 +259,7 @@ and crc32_gen_builtin_combinator_decl (_, { b_comb_id; b_comb_result }) =
   crc32_gen_combinator_ident b_comb_id ^ " ? = " ^ gen_ident b_comb_result
 
 let%expect_test "crc32_gen_combinator_decl: vector" =
-  Caml.print_endline @@ crc32_gen_combinator_decl (Loc.empty, {
+  Stdlib.print_endline @@ crc32_gen_combinator_decl (Loc.empty, {
     comb_id = Loc.empty, CombIdShort (Name "vector");
     comb_opt_args = [Loc.empty, {
       opt_arg_id = Loc.empty, "x";

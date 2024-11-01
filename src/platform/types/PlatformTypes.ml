@@ -2,8 +2,8 @@ open! Base
 
 module type HashFn = sig
   type t
-  val init: unit -> t
-  val feed: t -> Cstruct.t -> unit
+  (* val init: unit -> t *)
+  val feed: t -> Cstruct.t -> t
   val get: t -> Cstruct.t
   val digest: Cstruct.t -> Cstruct.t
 end

@@ -15,7 +15,7 @@ let crc32 (data: string) =
   Int32.lnot !r
 
 let%expect_test "tl/crc32" =
-  Caml.Printf.printf "%lX" @@ crc32 "Uido0Ooz";
+  Stdlib.Printf.printf "%lX" @@ crc32 "Uido0Ooz";
   [%expect {| 37955B3B |}]
 
 let calculate (comb: Ast.combinator_decl) builtin =

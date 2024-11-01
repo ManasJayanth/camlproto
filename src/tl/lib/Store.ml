@@ -241,12 +241,12 @@ let is_constr_defined_in_prelude (_, c1) =
   | None -> false
 
 let%expect_test "show @@ make () outputs empty store" =
-  Caml.print_endline @@ show @@ make ();
+  Stdlib.print_endline @@ show @@ make ();
   [%expect {|
     Types:
     Constructors:
     Functions: |}]
 
 let%expect_test "value of fresh_constr_ref if only the prelude is in the store" =
-  Caml.Printf.printf "%d" (fresh_constr_ref default);
+  Stdlib.Printf.printf "%d" (fresh_constr_ref default);
   [%expect {| 8 |}]

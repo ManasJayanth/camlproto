@@ -11,12 +11,12 @@ end
 
 
 (* let _ =
-  (* Nocrypto.Hash.SHA256.digest_size |> Int.to_string |> Caml.print_endline *)
+  (* Nocrypto.Hash.SHA256.digest_size |> Int.to_string |> Stdlib.print_endline *)
   let t = Nocrypto.Hash.SHA256.init () in
   (* let in_cs = Nocrypto.Numeric.Int64.to_cstruct_be 412L in *)
   let in_cs = Cstruct.of_string "abc" in
   Nocrypto.Hash.SHA256.feed t in_cs;
   let out_cs = Nocrypto.Hash.SHA256.get t in
   (* let out = Nocrypto.Numeric.Int64.of_cstruct_be out_cs in *)
-  (* out |> Int64.to_string |> Caml.print_endline *)
+  (* out |> Int64.to_string |> Stdlib.print_endline *)
   out_cs |> Nocrypto.Base64.encode |> Cstruct.to_string *)
